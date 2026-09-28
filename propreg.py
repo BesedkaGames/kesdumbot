@@ -25,39 +25,39 @@ def time_convert(time) -> str:
 from json import dump, load
 def upload_voters():
     global users
-    with open(f'users/voters.json', 'w', encoding='UTF-8') as f:
+    with open(f"users/voters.json", "w", encoding="UTF-8") as f:
         dump(users, f, indent=4, ensure_ascii=False)
 
 def download_voters():
     global users
-    with open(f'users/voters.json', 'r', encoding='UTF-8') as f:
+    with open(f"users/voters.json", "r", encoding="UTF-8") as f:
         users = {int(k): v for k, v in load(f).items()}
 
 def upload_spectators():
     global spectators
-    with open(f'users/spectators.json', 'w', encoding='UTF-8') as f:
+    with open(f"users/spectators.json", "w", encoding="UTF-8") as f:
         dump(spectators, f, indent=4, ensure_ascii=False)
 
 def download_spectators():
     global spectators
-    with open(f'users/spectators.json', 'r', encoding='UTF-8') as f:
+    with open(f"users/spectators.json", "r", encoding="UTF-8") as f:
         spectators = [int(usid) for usid in load(f)]
         
 download_voters()
 download_spectators()
         
 def crypto_gen(id: str):
-    key = ''
-    numbers = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    key = ""
+    numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
     hard = len(numbers)
     number = int(id)
     while number > 0: 
-        key = f'{numbers[number % hard]}' + key
+        key = f"{numbers[number % hard]}" + key
         number //= hard
     return key
 
 def uncrypt_key(key: str):
-    numbers = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+    numbers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
     hard = len(numbers)
     usid = 0
     for numb in range(len(key)):
@@ -85,7 +85,7 @@ def global_spectators_mes(message_text):
         
 def global_spectator_pict(picture, message_text):
     for id in spectators:
-        picture = open(f'{picture}','rb')
+        picture = open(f"{picture}","rb")
         bot.send_photo(id, picture, message_text)
         
 def global_picture(picture, message_text):

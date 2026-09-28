@@ -13,7 +13,7 @@ from reg import *
 from spectators import *
 from voting import *
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Попытка подключения к Telegram API...")
     try:
         bot_info = bot.get_me()
