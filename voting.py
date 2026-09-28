@@ -44,7 +44,7 @@ def vote_in(message):
 def parties_infos(message):
     markup = tbtypes.InlineKeyboardMarkup(row_width=1)
     markup.add(*[
-        tbtypes.InlineKeyboardButton(f"{PARTIES[list(PARTIES.keys())[i]]}", callback_data=f"cbpart:{i}") for i in range(len(PARTIES)-1)
+        tbtypes.InlineKeyboardButton(f"{list(PARTIES.keys())[i]}", callback_data=f"cbpart:{i}") for i in range(len(PARTIES)-1)
     ])
     bot.send_message(
         message.chat.id,

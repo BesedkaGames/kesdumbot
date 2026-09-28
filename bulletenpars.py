@@ -28,9 +28,9 @@ def new_bulleten():
         draw.rectangle(((SP_X+NUMBER_WIDTH,SP_Y+PARTY_HEIGHT*part_idx),(SP_X+NUMBER_WIDTH+LOGO_WIDTH,SP_Y+PARTY_HEIGHT*(part_idx+1))),outline=(0,0,0),width=4)
         draw.rectangle(((SP_X+NUMBER_WIDTH+LOGO_WIDTH,SP_Y+PARTY_HEIGHT*part_idx),(bulwidth-SP_X-FIELD_WIDTH,SP_Y+PARTY_HEIGHT*(part_idx+1))),outline=(0,0,0),width=4)
         draw.rectangle(((bulwidth-SP_X-FIELD_WIDTH,SP_Y+PARTY_HEIGHT*part_idx),(bulwidth-SP_X,SP_Y+PARTY_HEIGHT*(part_idx+1))),outline=(0,0,0),width=4)
-        draw.text((SP_X+NUMBER_WIDTH*1/5,SP_Y+PARTY_HEIGHT*part_idx+PARTY_HEIGHT*1/3.5),f"{party["number"]}",(0,0,0),font=ImageFont.truetype("arialbd.ttf",30))
+        draw.text((SP_X+NUMBER_WIDTH*1/5,SP_Y+PARTY_HEIGHT*part_idx+PARTY_HEIGHT*1/3.5),f"{party['number']}",(0,0,0),font=ImageFont.truetype("arialbd.ttf",30))
         img.paste(Image.open(party["logo"],"r"),(SP_X+NUMBER_WIDTH+10,SP_Y+PARTY_HEIGHT*part_idx+10))
-        draw.text((SP_X+NUMBER_WIDTH+LOGO_WIDTH+12,SP_Y+PARTY_HEIGHT*part_idx+30),f"{party["print_name"]}",(0,0,0),font=ImageFont.truetype("arialbd.ttf",18))
+        draw.text((SP_X+NUMBER_WIDTH+LOGO_WIDTH+12,SP_Y+PARTY_HEIGHT*part_idx+30),f"{party['print_name']}",(0,0,0),font=ImageFont.truetype("arialbd.ttf",18))
         draw.rectangle(((bulwidth-SP_X-FIELD_WIDTH+15,SP_Y+PARTY_HEIGHT*part_idx+15),(bulwidth-SP_X-15,SP_Y+PARTY_HEIGHT*(part_idx+1)-15)),fill=(191,191,191),outline=(0,0,0),width=4)
 
     img.save("bulleten.png")
@@ -67,7 +67,7 @@ def parsvote(id, votefile: str):
         votetext = "Недействительный бюллетень (Несколько галочек)"
         users[id]["vote_id"] = -1
     users[id]["vote_option_name"] = votetext
-    global_spectator_pict(votefile, f"☑ БЮЛЛЕТЕНЬ ИЗБИРАТЕЛЯ {users[id]["cryptokey"]}\nГОЛОС ЗАСЧИТАН БОТОМ КАК\n{votetext}")
+    global_spectator_pict(votefile, f"☑ БЮЛЛЕТЕНЬ ИЗБИРАТЕЛЯ {users[id]['cryptokey']}\nГОЛОС ЗАСЧИТАН БОТОМ КАК\n{votetext}")
     users[id]["wait_bul"] = False
     upload_voters()
     return

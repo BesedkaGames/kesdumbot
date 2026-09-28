@@ -4,21 +4,21 @@ import propreg as pr
 
 def spect_reg_note(usid):
     SPECTATOR_REG_MESSAGE = f"""☑ РЕГИСТРАЦИЯ НОВОГО ИЗБИРАТЕЛЯ №{len(pr.users)}
-        ПОДТВЕРЖДЁННОСТЬ ЧЕЛОВЕКА: {"✔" if pr.users[usid]["bot_analysis"] else "✖"}
-        УНИКАЛЬНОСТЬ ПОЛЬЗОВАТЕЛЯ: {pr.users[usid]["unique"]}%
-        УНИКАЛЬНЫЙ КРИПТОКЛЮЧ: {pr.users[usid]["cryptokey"]}
-        ДАТА ПЕРВИЧНОЙ РЕГИСТРАЦИИ: {pr.users[usid]["prereg_datetime"]}
-        ДАТА РЕГИСТРАЦИИ: {pr.users[usid]["registration_datetime"]}
+        ПОДТВЕРЖДЁННОСТЬ ЧЕЛОВЕКА: {'✔' if pr.users[usid]['bot_analysis'] else '✖'}
+        УНИКАЛЬНОСТЬ ПОЛЬЗОВАТЕЛЯ: {pr.users[usid]['unique']}%
+        УНИКАЛЬНЫЙ КРИПТОКЛЮЧ: {pr.users[usid]['cryptokey']}
+        ДАТА ПЕРВИЧНОЙ РЕГИСТРАЦИИ: {pr.users[usid]['prereg_datetime']}
+        ДАТА РЕГИСТРАЦИИ: {pr.users[usid]['registration_datetime']}
         #наблюдение
         #регистрация"""
     for spect in pr.spectators:
         bot.send_message(spect, SPECTATOR_REG_MESSAGE)
         
 def spect_vote_note(usid):
-    SPECTATOR_VOTE_MESSAGE = f"""☑ ОПУЩЕН ГОЛОС ЗА ПАРТИЮ «{pr.users[usid]["vote_option_name"]}»
-        Криптоключ избирателя: {pr.users[usid]["cryptokey"]}
+    SPECTATOR_VOTE_MESSAGE = f"""☑ ОПУЩЕН ГОЛОС ЗА ПАРТИЮ «{pr.users[usid]['vote_option_name']}»
+        Криптоключ избирателя: {pr.users[usid]['cryptokey']}
         #наблюдение
-        #голос_{pr.users[usid]["vote_id"]+1}"""
+        #голос_{pr.users[usid]['vote_id']+1}"""
     for spect in pr.spectators:
         bot.send_message(spect, SPECTATOR_VOTE_MESSAGE)
 

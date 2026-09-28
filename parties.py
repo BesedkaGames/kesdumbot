@@ -91,7 +91,7 @@ def generate_voting_results() -> str:
     VOTING_RESULTS = f"\nЯвка - {calculate_turnout()*100}%\n"
     for party in list(Results.keys())[:-1]:
         VOTING_RESULTS += f"\n{party} - {calculate_procent(party)}%"
-    VOTING_RESULTS += f"\n\nПротив всех - {calculate_procent("Против Всех")}% - {Results["Против Всех"]} голосов"
+    VOTING_RESULTS += f"\n\nПротив всех - {calculate_procent('Против Всех')}% - {Results['Против Всех']} голосов"
     VOTING_RESULTS += f"\nНедействительные бюллетени- {round(INVALID_BUL/sum(Results.values())*100,2)}%"
     return VOTING_RESULTS
 
