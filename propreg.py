@@ -24,21 +24,25 @@ def time_convert(time) -> str:
 
 from json import dump, load
 def upload_voters():
+    return
     global users
     with open(f"users/voters.json", "w", encoding="UTF-8") as f:
         dump(users, f, indent=4, ensure_ascii=False)
-
+        
 def download_voters():
+    return
     global users
     with open(f"users/voters.json", "r", encoding="UTF-8") as f:
         users = {int(k): v for k, v in load(f).items()}
 
 def upload_spectators():
+    return
     global spectators
     with open(f"users/spectators.json", "w", encoding="UTF-8") as f:
         dump(spectators, f, indent=4, ensure_ascii=False)
 
 def download_spectators():
+    return
     global spectators
     with open(f"users/spectators.json", "r", encoding="UTF-8") as f:
         spectators = [int(usid) for usid in load(f)]
